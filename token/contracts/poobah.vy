@@ -9,6 +9,11 @@
 # node_provider = Web3(Web3.HTTPProvider('https://polygon-mumbai.infura.io/v3/c38f9f45c4b841fdbca2124a94560c9f'))
 # node_provider.isConnected()
 # >>> false
+
+TODO: get provider to return true
+left off:
+https://www.youtube.com/watch?v=GacdVp_yx2g&t=320s
+https://www.youtube.com/watch?v=z9qDIiUvydc
 """
 from web3 import Web3
 
