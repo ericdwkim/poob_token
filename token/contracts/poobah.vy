@@ -1,25 +1,8 @@
 # @version 0.2.16
 
-"""
-@title POOB Token
-
-
-const Web3 = require("web3");
-const ganache = require("ganache");
-
-const web3 = new Web3(ganache.provider());
-
-# from web3 import Web3
-# node_provider = Web3(Web3.HTTPProvider('https://polygon-mumbai.infura.io/v3/c38f9f45c4b841fdbca2124a94560c9f'))
-# node_provider.isConnected()
-# >>> false
-
-TODO: get provider to return true
-left off:
-https://www.youtube.com/watch?v=GacdVp_yx2g&t=320s
-https://www.youtube.com/watch?v=z9qDIiUvydc
-"""
 from web3 import Web3
+
+implements: ERC20
 
 # Storage Variables
 TOTAL_SUPPLY: constant(uint256) = 10**27 # 10**(9 + DECIMALS)
@@ -51,8 +34,6 @@ def balanceOf(address: address) -> uint256:
     return _balances[address]
 
 @external
-def transfer(_to: address, _amount: uint256) -> bool
-    assert self._balances[msg.sender] >= _amount, 'Insufficient balance'
-    return x
-
-@external
+# def transfer(_to: address, _amount: uint256) -> bool
+#     assert self._balances[msg.sender] >= _amount, 'Insufficient balance'
+#     return x
