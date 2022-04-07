@@ -1,9 +1,13 @@
-# @version ^0.3.0
+# @version 0.2.16
 
 """
 @title POOB Token
 
 
+const Web3 = require("web3");
+const ganache = require("ganache");
+
+const web3 = new Web3(ganache.provider());
 
 # from web3 import Web3
 # node_provider = Web3(Web3.HTTPProvider('https://polygon-mumbai.infura.io/v3/c38f9f45c4b841fdbca2124a94560c9f'))
