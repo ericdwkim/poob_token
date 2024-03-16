@@ -1,11 +1,13 @@
-# @version 0.2.16
+# @version >=0.2.16 < 0.3.7
 
 from vyper.interfaces import ERC20
 
 implements: ERC20
 
 # Storage Variables
-TOTAL_SUPPLY: constant(uint256) = 10**27 # 10**(9 + DECIMALS)
+MAX_SUPPLY: constant(uint256) = 1000000
+INIT_SUPPLY: constant(uint256) = 10000
+totalSupply: public(uint256)
 NAME: constant(String[10]) = "POOB"
 DECIMALS: constant(uint256) = 18
 balances: uint256
@@ -18,7 +20,7 @@ totalSupply: public(uint256)
 def __init__(
     _token: address
     ):
-    self.balances[msg.sender] = TOTAL_SUPPLY
+    self.balances[msg.sender] = MAX_SUPPLY
 
 @external
 @view
@@ -28,7 +30,7 @@ def name() -> String[10]:
 @external
 @view
 def totalSupply() -> uint256:
-    return TOTAL_SUPPLY
+    return MAX_SUPPLY
 
 @external
 @view
@@ -74,8 +76,14 @@ def approve(_spender: address, _value: uint256) -> bool:
     self._allowance[msg.sender][_spender] = _value
     log Approval(msg.sender, _spender, _value)
 
+@external
+def mint(_account: address, _value: uint256) -> bool:
+    if self.totalSupply + _value <= MAX_SUPPLY:
+        self.totalSupply += _value
+        self.balances[_account] += _value
 
-
+    log Transfer(empty(address), _account, _value)
+    return True
 
 event Transfer:
     sender: indexed(address)
