@@ -1,15 +1,14 @@
 pragma solidity ^0.6.0;
 
-// SPDX-License-Identifier: MIT
-
 import "./SafeMath.sol";
+import "./
 
 /**
     @title Bare-bones Token implementation
     @notice Based on the ERC-20 token standard as defined at
             https://eips.ethereum.org/EIPS/eip-20
  */
-contract Token {
+contract Poob {
 
     using SafeMath for uint256;
 
